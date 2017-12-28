@@ -1,23 +1,36 @@
 'use strict'
 
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { fetchLocationProducts } from '../../store'
+import MapProducts from './MapProducts'
 
 
-const ProductDisplay = props => {
+class ProductDisplay extends Component {
 
-  return (
-    <div>ProductDisplay</div>
-  )
+  componentDidMount () {
+    this.props.fetchLocationProducts(this.props.locationId)
+  }
+
+  render () {
+
+    return (
+      <div>
+        <MapProducts products={ this.props.products } />
+      </div>
+    )
+  }
+
 }
 
-const mapStateToProps = state => ({
-
+const mapState = state => ({
+  products: state.locationProducts,
+  locationId: state //.location.id
 })
 
-const mapDispatchToProps = dispatch => ({
-
+const mapDispatch = dispatch => ({
+  fetchLocationProducts: locationId => dispatch(fetchLocationProducts(locationId))
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductDisplay)
+export default connect(mapState, mapDispatch)(ProductDisplay)

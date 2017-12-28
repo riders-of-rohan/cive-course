@@ -20,7 +20,7 @@ router.param('/:id', (req, res, next, id) => {
 })
 
 //GET - finds all products associated with this location
-router.get('/:locationId', (req, res, next) => {
+router.get('/locations/:locationId', (req, res, next) => {
   Product.findAll({
     where: { locationId: req.params.locationId }
   })

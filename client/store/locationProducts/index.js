@@ -16,8 +16,8 @@ export const getLocationProducts = products => ({ type: GET_LOCATION_PRODUCTS, p
 /**
  * THUNK CREATORS
  */
-export const fetchLocationProducts = () => dispatch =>
-  axios.get('/api/products/')
+export const fetchLocationProducts = locationId => dispatch =>
+  axios.get(`/api/products/locations/${locationId}`)
     .then(res => dispatch(getLocationProducts(res.data)))
     .catch(err => console.log(err))
 
