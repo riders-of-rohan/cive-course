@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+'use strict'
+
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import { setLocation } from '../../store'
+
 
 class locationSelection extends Component {
   constructor(props) {
@@ -45,4 +47,4 @@ const mapDispatch = dispatch => ({
   setLocation: location => dispatch(setLocation(location))
 })
 
-export default connect(null, mapDispatchToProps)(locationSelection)
+export default connect(null, mapDispatch)(locationSelection)
