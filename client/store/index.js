@@ -7,11 +7,13 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 
 import user from './user'
 import locationProducts from './locationProducts'
+import location from './location'
 
 
 const reducer = combineReducers({
   user,
-  locationProducts
+  locationProducts,
+  location
 })
 
 const middleware = composeWithDevTools(applyMiddleware(
@@ -26,3 +28,4 @@ export default store
 
 export * from './user'
 export * from './locationProducts'
+export * from './location'
