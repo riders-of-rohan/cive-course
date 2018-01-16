@@ -19,10 +19,14 @@ router.param('/:id', (req, res, next, id) => {
     .catch(next)
 })
 
-//GET - finds all products associated with this location
-router.get('/locations/:locationId', (req, res, next) => {
+//GET - finds all products associated with all provided locations
+router.get('/locations/:locations', (req, res, next) => {
+  const locations = req.params.locations.split('_')
+
+  // bluebird spread locations
+
   Product.findAll({
-    where: { locationId: req.params.locationId }
+    where: { locationId: req.params.locations }
   })
     .then(products => res.json(products))
     .catch(next)
@@ -30,3 +34,8 @@ router.get('/locations/:locationId', (req, res, next) => {
 
 
 module.exports = router
+
+
+// how do I send an array restfully
+  // action?id=a&id=b
+  // query string

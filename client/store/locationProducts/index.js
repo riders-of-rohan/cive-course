@@ -16,10 +16,16 @@ export const getLocationProducts = products => ({ type: GET_LOCATION_PRODUCTS, p
 /**
  * THUNK CREATORS
  */
-export const fetchLocationProducts = locationId => dispatch =>
+export const fetchLocationProducts = locations => dispatch => {
+  let locationId = ''
+  locations.forEach(location => {
+    locationId = `${locationId}_${location.id}`
+  }) //there are no ids for locations
+
   axios.get(`/api/products/locations/${locationId}`)
     .then(res => dispatch(getLocationProducts(res.data)))
     .catch(err => console.log(err))
+}
 
 /**
  * REDUCER
